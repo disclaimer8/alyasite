@@ -1,0 +1,32 @@
+ErrorDocument 403 /page19579266.html
+ErrorDocument 404 /page19579266.html
+
+DirectoryIndex page8072774.html
+
+RewriteEngine On
+
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule ^(.*)$ https://alyasereda\.com/$1 [R=301,L]
+
+RewriteCond %{HTTP:X-Forwarded-Proto} =https
+RewriteCond %{HTTP_HOST} ^www\.alyasereda.com [NC]
+RewriteRule ^(.*)$ https://alyasereda\.com/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} /robots.txt
+RewriteCond "%{DOCUMENT_ROOT}/robots_%{HTTP_HOST}.txt" -f
+RewriteRule ^(.*)$ robots_%{HTTP_HOST}.txt [NC,L]
+RewriteRule ^test$ page19426148.html [NC]
+RewriteRule ^test/$ page19426148.html [NC]
+
+RewriteRule ^error404$ page19579266.html [NC]
+RewriteRule ^error404/$ page19579266.html [NC]
+
+RewriteRule ^blog$ page19581971.html [NC]
+RewriteRule ^blog/$ page19581971.html [NC]
+
+RewriteRule ^favicon.ico$ https://static.tildacdn.com/tild3739-3935-4138-a163-363962323061/favicon.ico [R=302,L]
+
+<IfModule mod_headers.c>
+	Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
